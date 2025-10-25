@@ -20,18 +20,19 @@ This project implements a complete data analytics pipeline for cafe sales data u
 
 ```
 customer-analytics/
-├── Dockerfile              # Docker container configuration
-├── ingest.py              # Data ingestion script
-├── preprocess.py          # Data cleaning and preprocessing
-├── analytics.py           # Generate textual insights
-├── visualize.py           # Create correlation heatmap
-├── cluster.py             # K-Means clustering
-├── summary.sh             # Export results from container
-├── README.md              # This file
+├── Dockerfile              
+├── ingest.py              
+├── preprocess.py          
+├── analytics.py           
+├── visualize.py           
+├── cluster.py             
+├── summary.sh             
+├── README.md              
 ├── Data/
 │   └── dirty_cafe_sales.csv
-└── results/               # Output files (generated)
+└── results/               
     ├── data_preprocessed.csv
+    ├── data_raw.csv
     ├── insight1.txt
     ├── insight2.txt
     ├── insight3.txt
@@ -80,13 +81,8 @@ Data Ingestion → Preprocessing → Analytics → Visualization → Clustering
 
 ### Step 1: Build Docker Image
 
-cd customer-analytics
-docker build -t customer-analytics .
-**Expected output:**
-
-Successfully built <image_id>
-Successfully tagged customer-analytics:latest
-
+docker build -t csci461-pipeline:latest .
+ 
 ---
 
 ## Execution
@@ -94,18 +90,14 @@ Successfully tagged customer-analytics:latest
 ### Step 2: Run Docker Container
 
 
-docker run -it --name analytics-container customer-analytics
+docker run --name csci461_assignment1 -it csci461-pipeline:latest bash -c "python ingest.py /app/pipeline/data/dirty_cafe_sales.csv"
 
 
 This starts an interactive bash shell inside the container.
 
 ### Step 3: Run the Pipeline
 
-Inside the container, execute:
-
-
-python ingest.py Data/dirty_cafe_sales.csv
-
+Inside the container:
 
 The pipeline will automatically run all scripts in sequence:
 - `ingest.py` → `preprocess.py` → `analytics.py` → `visualize.py` → `cluster.py`
@@ -132,7 +124,7 @@ Run the summary script on your host machine:
 
 **Windows (Git Bash/WSL):**
 ```
-bash summary.sh
+./summary.sh csci461_assignment1
 ```
 
 This will:
@@ -160,50 +152,15 @@ This will:
 
 ---
 
-## Docker Commands Reference
-
-| Command | Purpose |
-|---------|---------|
-| `docker build -t customer-analytics .` | Build the image |
-| `docker images` | List images |
-| `docker run -it --name analytics-container customer-analytics` | Run container |
-| `docker ps` | List running containers |
-| `docker ps -a` | List all containers |
-| `docker stop analytics-container` | Stop container |
-| `docker rm analytics-container` | Remove container |
-| `docker rmi customer-analytics` | Remove image |
-
----
-
-## Technologies Used
+## Tech Stack
 
 - **Python 3.11**
-- **pandas** - Data manipulation
-- **numpy** - Numerical operations
-- **scikit-learn** - Machine learning (K-Means, preprocessing)
-- **matplotlib** - Visualization
-- **seaborn** - Statistical visualization
-- **Docker** - Containerization
-
----
-
-## Troubleshooting
-
-**Container already exists:**
-```
-docker rm analytics-container
-```
-
-**Port conflicts:**
-```
-docker ps
-docker stop <container_id>
-```
-
-**Permission denied (summary.sh):**
-```
-chmod +x summary.sh
-```
+- **pandas** 
+- **numpy** 
+- **scikit-learn** 
+- **matplotlib** 
+- **seaborn** 
+- **Docker** 
 
 ---
 
@@ -216,10 +173,8 @@ This project is submitted as part of CSCI461 coursework at Nile University, Fall
 ## Acknowledgments
 
 - Dataset: Ahmed Mohamed (Kaggle) 
-- Course Instructor: [Ebrahim Zaghloul Abdelbaky]
+- Course Instructor: [Ibrahim Zaghloul Abdelbaky]
 - Nile University - CSCI461 Course
 
----
-
-**Submission Date:** October 25, 2025  
+--- 
 **Team Leader:** [Shahd Hamdy]
