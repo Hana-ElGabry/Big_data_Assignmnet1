@@ -93,9 +93,7 @@ docker build -t csci461-pipeline:latest .
 docker run --name csci461_assignment1 -it csci461-pipeline:latest bash -c "python ingest.py /app/pipeline/data/dirty_cafe_sales.csv"
 
 
-This starts an interactive bash shell inside the container.
-
-### Step 3: Run the Pipeline
+This starts an interactive bash shell inside the container and runs the pipeline.
 
 Inside the container:
 
@@ -104,12 +102,12 @@ The pipeline will automatically run all scripts in sequence:
 
 **Expected output:**
 
-STEP 1: DATA INGESTION
-STEP 2: DATA PREPROCESSING
-STEP 3: ANALYTICS
-STEP 4: VISUALIZATION
-STEP 5: CLUSTERING
-Pipeline execution finished!
+- STEP 1: DATA INGESTION
+- STEP 2: DATA PREPROCESSING
+- STEP 3: ANALYTICS
+- STEP 4: VISUALIZATION
+- STEP 5: CLUSTERING
+- Pipeline execution finished!
 
 
 ### Step 4: Exit Container
@@ -158,7 +156,7 @@ docker pull noor338/csci461-pipeline
 
 ---
 
-## Tech Stack
+## Tech Stack:
 
 - **Python 3.11**
 - **pandas** 
