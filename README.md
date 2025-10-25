@@ -1,4 +1,3 @@
-```markdown
 # Customer Analytics Pipeline
 
 ## Team Members
@@ -19,7 +18,6 @@ This project implements a complete data analytics pipeline for cafe sales data u
 
 ## Project Structure
 
-```
 customer-analytics/
 ├── Dockerfile              # Docker container configuration
 ├── ingest.py              # Data ingestion script
@@ -38,15 +36,15 @@ customer-analytics/
     ├── insight3.txt
     ├── summary_plot.png
     └── clusters.txt
-```
 
----
+
+
 
 ## Pipeline Workflow
 
-```
+
 Data Ingestion → Preprocessing → Analytics → Visualization → Clustering
-```
+
 
 ### 1. Data Ingestion (`ingest.py`)
 - Downloads/loads raw cafe sales data
@@ -82,16 +80,16 @@ Data Ingestion → Preprocessing → Analytics → Visualization → Clustering
 
 ### Step 1: Build Docker Image
 
-```
+
 cd customer-analytics
 docker build -t customer-analytics .
-```
+
 
 **Expected output:**
-```
+
 Successfully built <image_id>
 Successfully tagged customer-analytics:latest
-```
+
 
 ---
 
@@ -99,9 +97,9 @@ Successfully tagged customer-analytics:latest
 
 ### Step 2: Run Docker Container
 
-```
+
 docker run -it --name analytics-container customer-analytics
-```
+
 
 This starts an interactive bash shell inside the container.
 
@@ -109,38 +107,32 @@ This starts an interactive bash shell inside the container.
 
 Inside the container, execute:
 
-```
+
 python ingest.py Data/dirty_cafe_sales.csv
-```
+
 
 The pipeline will automatically run all scripts in sequence:
 - `ingest.py` → `preprocess.py` → `analytics.py` → `visualize.py` → `cluster.py`
 
 **Expected output:**
-```
+
 STEP 1: DATA INGESTION
 STEP 2: DATA PREPROCESSING
 STEP 3: ANALYTICS
 STEP 4: VISUALIZATION
 STEP 5: CLUSTERING
 Pipeline execution finished!
-```
+
 
 ### Step 4: Exit Container
 
-```
+
 exit
-```
+
 
 ### Step 5: Extract Results
 
 Run the summary script on your host machine:
-
-**Linux/Mac:**
-```
-chmod +x summary.sh
-./summary.sh
-```
 
 **Windows (Git Bash/WSL):**
 ```
