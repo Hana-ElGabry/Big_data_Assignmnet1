@@ -80,18 +80,18 @@ Data Ingestion → Preprocessing → Analytics → Visualization → Clustering
 - Git (optional, for cloning)
 
 ### Step 1: Build Docker Image
-
+```
 docker build -t csci461-pipeline:latest .
- 
+ ```
 ---
 
 ## Execution
 
 ### Step 2: Run Docker Container
 
-
+```
 docker run --name csci461_assignment1 -it csci461-pipeline:latest bash -c "python ingest.py /app/pipeline/data/dirty_cafe_sales.csv"
-
+```
 
 This starts an interactive bash shell inside the container and runs the pipeline.
 
