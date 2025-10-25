@@ -131,6 +131,12 @@ This will:
 - Copy all outputs to `./results/` folder
 - Stop and remove the container
 
+## to run this image:
+find noor338/csci461-pipeline on Dockerhub
+ and use this command:
+ ```
+docker pull noor338/csci461-pipeline
+```
 ---
 
 ## Sample Outputs
