@@ -1,16 +1,10 @@
-# Big_data_Assignmnet1
-```markdown
 # Customer Analytics Pipeline
 
-**Course:** CSCI461 - Introduction to Big Data  
-**Assignment:** #1 - Fall 2025  
-**Institution:** Nile University
-
 ## Team Members
-- [HANA ELGABRY]
-- [NOOR ALZOGHBY]
-- [KHETAM ALMASRANY]
-- [SHAHD HAMDY]
+- [Shahd Hamdy Ragab]
+- [Hana Hatem Elgabry]
+- [Khetam Mohamed]
+- [Noor Akram alzoghby]
 
 ---
 
@@ -26,17 +20,17 @@ This project implements a complete data analytics pipeline for cafe sales data u
 
 ```
 customer-analytics/
-├── Dockerfile              
-├── ingest.py              
-├── preprocess.py          
-├── analytics.py           
-├── visualize.py           
-├── cluster.py             
-├── summary.sh             
-├── README.md              
+├── Dockerfile              # Docker container configuration
+├── ingest.py              # Data ingestion script
+├── preprocess.py          # Data cleaning and preprocessing
+├── analytics.py           # Generate textual insights
+├── visualize.py           # Create correlation heatmap
+├── cluster.py             # K-Means clustering
+├── summary.sh             # Export results from container
+├── README.md              # This file
 ├── Data/
 │   └── dirty_cafe_sales.csv
-└── results/               
+└── results/               # Output files (generated)
     ├── data_preprocessed.csv
     ├── insight1.txt
     ├── insight2.txt
@@ -45,13 +39,12 @@ customer-analytics/
     └── clusters.txt
 ```
 
----
 
 ## Pipeline Workflow
 
-```
+
 Data Ingestion → Preprocessing → Analytics → Visualization → Clustering
-```
+
 
 ### 1. Data Ingestion (`ingest.py`)
 - Downloads/loads raw cafe sales data
@@ -87,16 +80,12 @@ Data Ingestion → Preprocessing → Analytics → Visualization → Clustering
 
 ### Step 1: Build Docker Image
 
-```
 cd customer-analytics
 docker build -t customer-analytics .
-```
-
 **Expected output:**
-```
-Image Successfully built 
+
+Successfully built <image_id>
 Successfully tagged customer-analytics:latest
-```
 
 ---
 
@@ -104,41 +93,44 @@ Successfully tagged customer-analytics:latest
 
 ### Step 2: Run Docker Container
 
-```
+
 docker run -it --name analytics-container customer-analytics
-```
 
 
+This starts an interactive bash shell inside the container.
 
 ### Step 3: Run the Pipeline
 
 Inside the container, execute:
 
-```
+
 python ingest.py Data/dirty_cafe_sales.csv
-```
+
 
 The pipeline will automatically run all scripts in sequence:
 - `ingest.py` → `preprocess.py` → `analytics.py` → `visualize.py` → `cluster.py`
 
 **Expected output:**
-```
+
 STEP 1: DATA INGESTION
 STEP 2: DATA PREPROCESSING
 STEP 3: ANALYTICS
 STEP 4: VISUALIZATION
 STEP 5: CLUSTERING
 Pipeline execution finished!
-```
+
 
 ### Step 4: Exit Container
 
-```
+
 exit
-```
+
 
 ### Step 5: Extract Results
 
+Run the summary script on your host machine:
+
+**Windows (Git Bash/WSL):**
 ```
 bash summary.sh
 ```
@@ -168,18 +160,50 @@ This will:
 
 ---
 
+## Docker Commands Reference
 
+| Command | Purpose |
+|---------|---------|
+| `docker build -t customer-analytics .` | Build the image |
+| `docker images` | List images |
+| `docker run -it --name analytics-container customer-analytics` | Run container |
+| `docker ps` | List running containers |
+| `docker ps -a` | List all containers |
+| `docker stop analytics-container` | Stop container |
+| `docker rm analytics-container` | Remove container |
+| `docker rmi customer-analytics` | Remove image |
 
-## Tech Used
+---
+
+## Technologies Used
 
 - **Python 3.11**
-- **pandas** 
-- **numpy** 
-- **scikit-learn** 
-- **matplotlib**
-- **seaborn** 
-- **Docker** 
+- **pandas** - Data manipulation
+- **numpy** - Numerical operations
+- **scikit-learn** - Machine learning (K-Means, preprocessing)
+- **matplotlib** - Visualization
+- **seaborn** - Statistical visualization
+- **Docker** - Containerization
 
+---
+
+## Troubleshooting
+
+**Container already exists:**
+```
+docker rm analytics-container
+```
+
+**Port conflicts:**
+```
+docker ps
+docker stop <container_id>
+```
+
+**Permission denied (summary.sh):**
+```
+chmod +x summary.sh
+```
 
 ---
 
@@ -187,4 +211,15 @@ This will:
 
 This project is submitted as part of CSCI461 coursework at Nile University, Fall 2025.
 
-```
+---
+
+## Acknowledgments
+
+- Dataset: Ahmed Mohamed (Kaggle) 
+- Course Instructor: [Ebrahim Zaghloul Abdelbaky]
+- Nile University - CSCI461 Course
+
+---
+
+**Submission Date:** October 25, 2025  
+**Team Leader:** [Shahd Hamdy]
