@@ -1,0 +1,40 @@
+K-MEANS CLUSTERING RESULTS
+==================================================
+
+Configuration:
+- Algorithm: K-Means
+- Number of Clusters: 3
+- Features Used: Quantity, Price Per Unit, Total Spent (scaled)
+- Total Samples: 8613
+
+Cluster Distribution:
+
+Cluster 0:
+  - Samples: 2776
+  - Percentage: 32.2%
+
+Cluster 1:
+  - Samples: 3000
+  - Percentage: 34.8%
+
+Cluster 2:
+  - Samples: 2837
+  - Percentage: 32.9%
+
+==================================================
+Cluster Characteristics:
+
+Cluster 0:
+  - Avg Quantity: 4.15
+  - Avg Price: $3.93
+  - Avg Spending: $16.01
+
+Cluster 1:
+  - Avg Quantity: 3.18
+  - Avg Price: $1.49
+  - Avg Spending: $4.93
+
+Cluster 2:
+  - Avg Quantity: 1.77
+  - Avg Price: $3.54
+  - Avg Spending: $6.07
