@@ -1,0 +1,14 @@
+INSIGHT 1: TOP SELLING ITEMS
+==================================================
+
+Total Transactions Analyzed: 8613
+
+Top 5 Best-Selling Items:
+1. Juice: 1124 transactions (13.1%)
+2. Coffee: 1123 transactions (13.0%)
+3. Salad: 1099 transactions (12.8%)
+4. Cake: 1082 transactions (12.6%)
+5. Sandwich: 1075 transactions (12.5%)
+
+Key Finding:
+'Juice' is the most popular item, accounting for 13.1% of all transactions.
