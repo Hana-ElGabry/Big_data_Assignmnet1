@@ -18,6 +18,7 @@ This project implements a complete data analytics pipeline for cafe sales data u
 
 ## Project Structure
 
+```
 customer-analytics/
 ├── Dockerfile              # Docker container configuration
 ├── ingest.py              # Data ingestion script
@@ -36,8 +37,7 @@ customer-analytics/
     ├── insight3.txt
     ├── summary_plot.png
     └── clusters.txt
-
-
+```
 
 
 ## Pipeline Workflow
@@ -80,16 +80,12 @@ Data Ingestion → Preprocessing → Analytics → Visualization → Clustering
 
 ### Step 1: Build Docker Image
 
-
 cd customer-analytics
 docker build -t customer-analytics .
-
-
 **Expected output:**
 
 Successfully built <image_id>
 Successfully tagged customer-analytics:latest
-
 
 ---
 
@@ -219,11 +215,11 @@ This project is submitted as part of CSCI461 coursework at Nile University, Fall
 
 ## Acknowledgments
 
-- Dataset: Ahmed Mohamed (Kaggle)
+- Dataset: Ahmed Mohamed (Kaggle) 
 - Course Instructor: [Ebrahim Zaghloul Abdelbaky]
 - Nile University - CSCI461 Course
 
 ---
 
-**Submission Date:** October 26, 2025  
+**Submission Date:** October 25, 2025  
 **Team Leader:** [Shahd Hamdy]
