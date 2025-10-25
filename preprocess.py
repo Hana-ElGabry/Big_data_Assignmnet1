@@ -2,13 +2,19 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 import os
-
+import subprocess
+import sys
 def main():
     print("\n" + "="*50)
     print("STEP 2: DATA PREPROCESSING")
     print("="*50 + "\n")
     
-    df = pd.read_csv("Data/dirty_cafe_sales.csv")
+    if len(sys.argv) < 2:
+        print("Usage: python preprocess.py <input_csv>")
+        sys.exit(1)
+
+    in_path = sys.argv[1]
+    df = pd.read_csv(in_path)
     original_rows = len(df)
     
     # ===== DATA CLEANING =====
@@ -89,6 +95,7 @@ def main():
                                       labels=['Single', 'Few', 'Several', 'Many'])
     print(f"   - Created: Spending_Category, Quantity_Category\n")
     
+    out_path = "/app/pipeline/data_preprocessed.csv"
     # Save
     df.to_csv("data_preprocessed.csv", index=False)
     print("="*50)
@@ -96,6 +103,8 @@ def main():
     print("="*50 + "\n")
     
     os.system("python analytics.py")
+    subprocess.run(["python", "analytics.py", out_path], check=True)
+
 
 if __name__ == "__main__":
     main()

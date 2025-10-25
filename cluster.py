@@ -1,13 +1,17 @@
 import pandas as pd
 from sklearn.cluster import KMeans
-
+import os
+import sys
 def main():
     print("\n" + "="*50)
     print("STEP 5: CLUSTERING")
     print("="*50 + "\n")
-    
-    df = pd.read_csv("data_preprocessed.csv")
-    
+
+    if len(sys.argv) < 2:
+        print("Usage: python cluster.py <input_csv>")
+        sys.exit(1)
+    in_path = sys.argv[1]
+    df = pd.read_csv(in_path)    
     print("Applying K-Means clustering...")
     
     # Select scaled features for clustering
@@ -17,7 +21,7 @@ def main():
     kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
     df['Cluster'] = kmeans.fit_predict(features)
     
-    print("   ✓ Clustering complete\n")
+    print(" Clustering complete\n")
     
     # Count samples per cluster
     cluster_counts = df['Cluster'].value_counts().sort_index()
@@ -52,10 +56,9 @@ Cluster Distribution:
         output += f"  - Avg Spending: ${cluster_data['Total Spent'].mean():.2f}\n"
     
     # Save to file
-    with open("clusters.txt", "w") as f:
+    with open("/app/pipeline/clusters.txt", "w") as f:
         f.write(output)
-    
-    print("   ✓ Saved: clusters.txt\n")
+
     
     print("="*50)
     print("Clustering complete!")

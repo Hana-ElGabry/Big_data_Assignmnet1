@@ -1,12 +1,22 @@
 import pandas as pd
 import os
-
+import subprocess
+import sys
 def main():
     print("\n" + "="*50)
     print("STEP 3: ANALYTICS")
     print("="*50 + "\n")
     
-    df = pd.read_csv("data_preprocessed.csv")
+    if len(sys.argv) < 2:
+        print("Usage: python analytics.py <data_preprocessed.csv>")
+        sys.exit(1)
+
+    in_path = sys.argv[1]
+    if not os.path.exists(in_path):
+        print(f"ERROR: file not found: {in_path}")
+        sys.exit(2)
+    
+    df = pd.read_csv(in_path)
     
     # ===== INSIGHT 1: Top Items Analysis =====
     print("Generating Insight 1: Top Selling Items...")
@@ -84,8 +94,13 @@ Revenue by Location:
     print("="*50)
     print("All insights generated successfully!")
     print("="*50 + "\n")
-    
+    for i, text in enumerate(["Insight 1", "Insight 2", "Insight 3"], start=1):
+        with open(f"/app/pipeline/insight{i}.txt", "w") as f:
+            f.write(text)
+        print(f"✓ Saved: insight{i}.txt")
     os.system("python visualize.py")
+    subprocess.run(["python", "visualize.py", in_path], check=True)
+
 
 if __name__ == "__main__":
     main()
