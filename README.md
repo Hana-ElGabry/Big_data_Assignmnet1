@@ -1,13 +1,5 @@
-# Big_data_Assignmnet1
-Nile University — CSCI461: Introduction to Big Data
-## **README.md**
-
 ```markdown
 # Customer Analytics Pipeline
-
-**Course:** CSCI461 - Introduction to Big Data  
-**Assignment:** #1 - Fall 2025  
-**Institution:** Nile University
 
 ## Team Members
 - [Shahd Hamdy Ragab]
